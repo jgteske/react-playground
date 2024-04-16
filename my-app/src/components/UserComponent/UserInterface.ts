@@ -2,5 +2,7 @@ export default interface UserInterface {
   name: string;
   age: number;
   address: string;
-  dob: Date;
+  dob: Date | string;
+  email?: string;
+  message?: string;
 }
