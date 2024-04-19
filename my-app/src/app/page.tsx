@@ -1,4 +1,3 @@
-// pages/index.tsx
 import RootLayout from "@/components/Layout";
 
 export default function Home() {

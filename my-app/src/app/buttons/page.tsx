@@ -1,6 +1,5 @@
 "use client";
 
-// pages/index.tsx
 import Button from "@/components/Button/Button";
 import RootLayout from "@/components/Layout";
 
