@@ -175,6 +175,7 @@ const Form: React.FC = () => {
           Submit
         </button>
       </div>
+      <br />
       {isSubmitted ? (
         <UserComponent
           name={formData.name}
