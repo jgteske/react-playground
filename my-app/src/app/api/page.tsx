@@ -10,7 +10,12 @@ const ApiItems: ApiItem[] = [
   },
   {
     method: "GET",
-    reference: "...",
+    reference: "/api/apiendpoint",
+  },
+  {
+    method: "POST",
+    reference: "/api/apiendpoint",
+    desc: "data {name: 'name', email: 'email'}",
   },
 ];
 
