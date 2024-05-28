@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import "./Button.css";
 
 type ButtonType = "button" | "submit" | "reset" | undefined;
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
 const Button = (props: Props) => {
   return (
     <button
-      className={`${props.styles} px-3 py-2 rounded-lg hover:bg-violet-700 font-medium hover:ring-2 hover:border-2 border-2 border-transparent hover:border-black hover:ring-violet-700 w-full bg-violet-500`}
+      className={`${props.styles} custom-button-style px-3 py-2 rounded-lg hover:bg-violet-700 font-medium hover:ring-2 hover:border-2 border-2 border-transparent hover:border-black hover:ring-violet-700 w-full bg-violet-500`}
       type={props?.type}
       title={props.title}
       disabled={props.disabled}

@@ -7,6 +7,7 @@
   --white: hsl(0, 0%, 100%);
   --dark: hsl(0, 0%, 27%);
   --red: #fe0222;
+  --green: hsl(93, 100%, 39%);
 
   /* Defined Colors */
   --foreground-rgb: 0, 0, 0;
@@ -15,6 +16,8 @@
 
   /* Other Definitions */
   --accent: var(--dark);
+  --warning: var(--red);
+  --ok: var(--green);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,1 +1,5 @@
 /* You can add additional styles for the button in this file */
+.custom-button-style {
+  color: var(--accent);
+  background: var(--red);
+}

@@ -1,0 +1,4 @@
+/* You can add additional styles for the button in this file */
+.override-button-style {
+  color: var(--ok);
+}
