@@ -3,9 +3,18 @@
 @tailwind utilities;
 
 :root {
+  /* Basic Colors */
+  --white: hsl(0, 0%, 100%);
+  --dark: hsl(0, 0%, 27%);
+  --red: #fe0222;
+
+  /* Defined Colors */
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  /* Other Definitions */
+  --accent: var(--dark);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +22,9 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+
+    /* Other Definitions */
+    --accent: var(--white);
   }
 }
 
@@ -34,4 +46,25 @@ body {
 
 h1 {
   font-size: xx-large;
+}
+
+.box {
+  margin: 1em;
+  width: 200px;
+  height: 200px;
+  background: var(--accent);
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: var(--red);
+  transform-origin: 0%;
+}
+
+.page-spacer {
+  margin-top: 100%;
 }

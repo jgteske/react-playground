@@ -10,3 +10,4 @@ Additionally it can be used to configure different API endpoints.
 - next.js
 - tailwind
 - [Animate.css](https://animate.style/)
+- [Framer Motion](https://www.framer.com/motion/)

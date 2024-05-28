@@ -10,7 +10,8 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   { label: `Home`, url: `/` },
-  { label: `Example Buttons`, url: `/buttons` },
+  { label: `Buttons`, url: `/buttons` },
+  { label: `Animations`, url: `/animations` },
   { label: `Forms`, url: `/form` },
   { label: `About`, url: `/about` },
 ];
