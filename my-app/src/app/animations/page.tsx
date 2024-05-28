@@ -1,6 +1,7 @@
 "use client";
 import RootLayout from "@/components/Layout";
 import { motion, useScroll, useSpring } from "framer-motion";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const AnimationsPage: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -134,6 +135,32 @@ const AnimationsPage: React.FC = () => {
             whileInView="variant2"
           />
         </div>
+        <div className="page-spacer"></div>
+        {/* TEXT ANIMATION ON SCROLLING with React Animate On Scroll */}
+        <div>
+          <ScrollAnimation animateIn="fadeIn">
+            <h1>Some Text appearing after 2 Seconds:</h1>
+          </ScrollAnimation>
+          <br></br>
+          <ScrollAnimation
+            className="animate__delay-2s"
+            animateIn="rotateInDownLeft"
+            animateOut="rotateOutUpRight"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae
+            nunc convallis, accumsan purus et, tempus tortor. Integer ante
+            neque, ultricies a tortor in, pretium bibendum tellus. Aenean
+            consequat venenatis ullamcorper. Ut accumsan a est et malesuada.
+            Duis quis massa elementum, dictum massa nec, fermentum velit. Duis
+            sit amet quam tellus. Aenean ultricies sem mi. Suspendisse quis
+            velit vestibulum, vehicula magna eu, finibus ipsum. Cras vehicula
+            volutpat iaculis. Curabitur hendrerit luctus quam, vitae elementum
+            orci consequat eget. Quisque pharetra, augue sed semper malesuada,
+            metus lacus commodo libero, ac tempus neque sapien eget odio. Nunc
+            ultrices eget ligula vitae ornare.
+          </ScrollAnimation>
+        </div>
+        <div className="page-spacer"></div>
       </div>
     </RootLayout>
   );
