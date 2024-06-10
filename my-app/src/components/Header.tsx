@@ -12,6 +12,7 @@ const menuItems: MenuItem[] = [
   { label: `Home`, url: `/` },
   { label: `Buttons`, url: `/buttons` },
   { label: `Animations`, url: `/animations` },
+  { label: `Mui`, url: `/muitestpage` },
   { label: `Forms`, url: `/form` },
   { label: `About`, url: `/about` },
 ];
@@ -30,7 +31,7 @@ const Header: React.FC = () => {
           />
         </Link>
         <nav className='ml-8'>
-          <ul className='flex flex-wrap gap-x-8 text-gray-900'>
+          <ul className='flex flex-wrap gap-x-8 text-gray-900 '>
             {menuItems.map(({ url, label }, index) => (
               <li key={index}>
                 <HeaderNavLink href={url}>{label}</HeaderNavLink>

@@ -18,7 +18,7 @@ const HeaderNavLink: React.FC<HeaderNavLinkProps> = ({ href, children }) => {
       className={`hover:bg-gray-100 p-2 rounded block ${
         active ||
         (href.startsWith('/dashboard') && pathname.startsWith('/dashboard'))
-          ? 'text-black font-semibold'
+          ? 'text-black font-semibold bg-gray-100 p-2 rounded block'
           : 'text-gray-500'
       }`}>
       {children}
