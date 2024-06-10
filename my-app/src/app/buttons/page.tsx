@@ -13,7 +13,7 @@ const Buttons: React.FC = () => {
         <div>
           <Button
             styles='override-button-style'
-            handleClick={() => alert('hi')}
+            onClick={() => alert('hi')}
             type={'button'}
             title={'Test Titel'}
             disabled={false}>
