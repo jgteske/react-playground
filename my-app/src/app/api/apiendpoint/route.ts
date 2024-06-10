@@ -1,15 +1,15 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
 type DataForm = { name: string; age: number; message: string };
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
 
 export async function GET() {
-  redirect("https://www.google.com/");
+  redirect('https://www.google.com/');
 }
 
 export async function OPTIONS() {
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
   if (!isDataForm(data)) {
     return Response.json(
-      { error: { code: 404, message: "Wrong data format!" } },
+      { error: { code: 404, message: 'Wrong data format!' } },
       {
         status: 404,
       }
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
   }
 
   return Response.json(
-    { test: "Test" },
+    { test: 'Test' },
     {
       headers: corsHeaders,
       status: 200,
@@ -43,8 +43,8 @@ export async function POST(request: Request) {
  */
 function isDataForm(data: any): data is DataForm {
   return (
-    typeof data.name === "string" &&
-    typeof data.age === "number" &&
-    typeof data.message === "string"
+    typeof data.name === 'string' &&
+    typeof data.age === 'number' &&
+    typeof data.message === 'string'
   );
 }

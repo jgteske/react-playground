@@ -1,5 +1,5 @@
-import React from "react";
-import UserInterface from "./UserInterface";
+import React from 'react';
+import UserInterface from './UserInterface';
 
 const UserComponent: React.FC<UserInterface> = (props) => {
   return (
@@ -11,9 +11,9 @@ const UserComponent: React.FC<UserInterface> = (props) => {
       <br />
       You live at: <b>{props.address}</b>
       <br />
-      You were born:{" "}
+      You were born:{' '}
       <b>
-        {typeof props.dob === "object" && props.dob instanceof Date
+        {typeof props.dob === 'object' && props.dob instanceof Date
           ? props.dob.toDateString()
           : props.dob}
       </b>

@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import UserComponent from "@/components/UserComponent/UserComponent";
-import UserInterface from "../UserComponent/UserInterface";
+import React, { useState } from 'react';
+import UserComponent from '@/components/UserComponent/UserComponent';
+import UserInterface from '../UserComponent/UserInterface';
 
 const Form: React.FC = () => {
   const [formData, setFormData] = useState<UserInterface>({
-    name: "",
+    name: '',
     age: 0,
-    address: "",
+    address: '',
     dob: new Date(),
-    email: "",
-    message: "",
+    email: '',
+    message: '',
   });
 
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -24,14 +24,14 @@ const Form: React.FC = () => {
       ...formData,
       [name]: value,
     });
-    if (name === "email") {
+    if (name === 'email') {
       // Regular expression for validating email format
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const isValidEmail = emailRegex.test(value);
       //console.log("Is Valid Email:", isValidEmail);
       setIsEmailValid(isValidEmail);
-    } else if (name === "address") {
-      const isValidAddress = value.trim() !== ""; // Check if address is not empty
+    } else if (name === 'address') {
+      const isValidAddress = value.trim() !== ''; // Check if address is not empty
       setIsAddressValid(isValidAddress);
     }
   };
@@ -40,138 +40,133 @@ const Form: React.FC = () => {
     e.preventDefault();
 
     if (!isAddressValid) {
-      alert("Please enter a valid address.");
+      alert('Please enter a valid address.');
       return;
     }
 
     setIsSubmitted(true);
-    console.log("Form Data:", formData);
+    console.log('Form Data:', formData);
     // Here you can add your logic to send the form data to the server or perform any other action
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
-      <div className="mb-4">
+    <form
+      onSubmit={handleSubmit}
+      className='max-w-md mx-auto mt-8'>
+      <div className='mb-4'>
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="name"
-        >
+          className='block text-gray-700 text-sm font-bold mb-2'
+          htmlFor='name'>
           Name
         </label>
         <input
-          type="text"
-          id="name"
-          name="name"
+          type='text'
+          id='name'
+          name='name'
           value={formData.name}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          placeholder="Your name"
+          className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+          placeholder='Your name'
         />
       </div>
-      <div className="mb-4">
+      <div className='mb-4'>
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="age"
-        >
+          className='block text-gray-700 text-sm font-bold mb-2'
+          htmlFor='age'>
           Age
         </label>
         <input
-          type="number"
-          id="age"
-          name="age"
+          type='number'
+          id='age'
+          name='age'
           value={formData.age}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          placeholder="Your age"
+          className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+          placeholder='Your age'
         />
       </div>
-      <div className="mb-4">
+      <div className='mb-4'>
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="dob"
-        >
+          className='block text-gray-700 text-sm font-bold mb-2'
+          htmlFor='dob'>
           Date of birth
         </label>
         <input
-          type="date"
-          id="dob"
-          name="dob"
+          type='date'
+          id='dob'
+          name='dob'
           value={formData.dob.toString()}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          placeholder="Your date of birth"
+          className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+          placeholder='Your date of birth'
         />
       </div>
-      <div className="mb-4">
+      <div className='mb-4'>
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="email"
-        >
+          className='block text-gray-700 text-sm font-bold mb-2'
+          htmlFor='email'>
           Email
         </label>
         <input
-          type="email"
-          id="email"
-          name="email"
+          type='email'
+          id='email'
+          name='email'
           value={formData.email}
           onChange={handleChange}
           className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-            !isEmailValid && "border-red-500"
+            !isEmailValid && 'border-red-500'
           }`}
-          placeholder="Your email"
+          placeholder='Your email'
         />
         {!isEmailValid && (
-          <p className="text-red-500 text-xs italic">
+          <p className='text-red-500 text-xs italic'>
             Please enter a valid email address.
           </p>
         )}
       </div>
-      <div className="mb-4">
+      <div className='mb-4'>
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="address"
-        >
+          className='block text-gray-700 text-sm font-bold mb-2'
+          htmlFor='address'>
           Address
         </label>
         <input
-          type="text"
-          id="address"
-          name="address"
+          type='text'
+          id='address'
+          name='address'
           value={formData.address}
           onChange={handleChange}
           className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-            !isAddressValid && "border-red-500"
+            !isAddressValid && 'border-red-500'
           }`}
-          placeholder="Your address"
+          placeholder='Your address'
         />
         {!isAddressValid && (
-          <p className="text-red-500 text-xs italic">
+          <p className='text-red-500 text-xs italic'>
             Please enter a valid address.
           </p>
         )}
       </div>
-      <div className="mb-4">
+      <div className='mb-4'>
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="message"
-        >
+          className='block text-gray-700 text-sm font-bold mb-2'
+          htmlFor='message'>
           Message
         </label>
         <textarea
-          id="message"
-          name="message"
+          id='message'
+          name='message'
           value={formData.message}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          placeholder="Your message"
+          className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+          placeholder='Your message'
           rows={4}
         />
       </div>
-      <div className="flex items-center justify-between">
+      <div className='flex items-center justify-between'>
         <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
+          type='submit'
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
           Submit
         </button>
       </div>
@@ -189,12 +184,12 @@ const Form: React.FC = () => {
         <form onSubmit={handleSubmit}>
           {
             <UserComponent
-              name=""
+              name=''
               age={0}
-              address=""
-              dob="2000-01-01"
-              email=""
-              message=""
+              address=''
+              dob='2000-01-01'
+              email=''
+              message=''
             />
           }
         </form>

@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 const SearchField: React.FC = () => {
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>('');
 
   return (
     <input
-      type="text"
+      type='text'
       value={search}
       onChange={(e) => setSearch(e.target.value)}
-      className="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-500"
-      placeholder="Search..."
+      className='block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-500'
+      placeholder='Search...'
     />
   );
 };

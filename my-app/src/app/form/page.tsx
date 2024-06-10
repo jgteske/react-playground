@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Form from "@/components/Form/Form";
-import RootLayout from "@/components/Layout";
-import UserComponent from "@/components/UserComponent/UserComponent";
+import Form from '@/components/Form/Form';
+import RootLayout from '@/components/Layout';
+import UserComponent from '@/components/UserComponent/UserComponent';
 
 const Forms: React.FC = () => {
   return (
@@ -12,9 +12,9 @@ const Forms: React.FC = () => {
         <br />
         <div>
           <UserComponent
-            name="Testuser"
+            name='Testuser'
             age={26}
-            address="87 Summer St, Boston, MA 02110"
+            address='87 Summer St, Boston, MA 02110'
             dob={new Date()}
           />
         </div>

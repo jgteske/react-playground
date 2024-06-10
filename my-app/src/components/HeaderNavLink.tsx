@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface HeaderNavLinkProps {
   href: string;
@@ -17,11 +17,10 @@ const HeaderNavLink: React.FC<HeaderNavLinkProps> = ({ href, children }) => {
       href={href}
       className={`hover:bg-gray-100 p-2 rounded block ${
         active ||
-        (href.startsWith("/dashboard") && pathname.startsWith("/dashboard"))
-          ? "text-black font-semibold"
-          : "text-gray-500"
-      }`}
-    >
+        (href.startsWith('/dashboard') && pathname.startsWith('/dashboard'))
+          ? 'text-black font-semibold'
+          : 'text-gray-500'
+      }`}>
       {children}
     </Link>
   );

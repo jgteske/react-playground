@@ -4,7 +4,7 @@ export async function GET(request: Request) {
   const requestHeaders = new Headers(request.headers);
 
   return Response.json(
-    { text: "This is a subnode from the api", url: request.url },
+    { text: 'This is a subnode from the api', url: request.url },
     { headers: requestHeaders, status: 200 }
   );
 }

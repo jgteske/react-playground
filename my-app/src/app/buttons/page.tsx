@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Button from "@/components/Button/Button";
-import RootLayout from "@/components/Layout";
-import "./customStyle.css";
+import Button from '@/components/Button/Button';
+import RootLayout from '@/components/Layout';
+import './customStyle.css';
 
 const Buttons: React.FC = () => {
   return (
@@ -12,12 +12,11 @@ const Buttons: React.FC = () => {
         <br />
         <div>
           <Button
-            styles="override-button-style"
-            handleClick={() => alert("hi")}
-            type={"button"}
-            title={"Test Titel"}
-            disabled={false}
-          >
+            styles='override-button-style'
+            handleClick={() => alert('hi')}
+            type={'button'}
+            title={'Test Titel'}
+            disabled={false}>
             {/* children */}
             Open modal
           </Button>

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import "./Button.css";
+import React from 'react';
+import './Button.css';
 
-type ButtonType = "button" | "submit" | "reset" | undefined;
+type ButtonType = 'button' | 'submit' | 'reset' | undefined;
 interface Props {
   children: React.ReactNode;
   handleClick?: () => void;
@@ -20,8 +20,7 @@ const Button = (props: Props) => {
       type={props?.type}
       title={props.title}
       disabled={props.disabled}
-      onClick={props?.handleClick}
-    >
+      onClick={props?.handleClick}>
       {props.children}
     </button>
   );
