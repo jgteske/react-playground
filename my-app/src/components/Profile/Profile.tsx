@@ -20,6 +20,9 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+
 import SocialAction from './Social';
 
 interface ProfileProps {
@@ -30,6 +33,7 @@ interface ProfileProps {
   facebook?: string;
   x?: string;
   instagram?: string;
+  tags?: string[];
 }
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -49,6 +53,7 @@ export const Profile = ({
   facebook,
   x,
   instagram,
+  tags,
 }: ProfileProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -150,117 +155,133 @@ export const Profile = ({
           image={bannerImage}
         />
       )}
-      <CardContent className='flex justify-between'>
-        <div>
-          <Tooltip title='Account settings'>
-            <Button
-              onClick={handleClick}
-              aria-controls={open ? 'account-menu' : undefined}
-              aria-haspopup='true'
-              aria-expanded={open ? 'true' : undefined}>
-              <StyledBadge
-                badgeContent={badgeContent}
-                color='secondary'>
-                {image ? (
-                  <Avatar
-                    alt={userName}
-                    src={image}
-                  />
-                ) : (
-                  <Avatar {...stringAvatar(userName)} />
-                )}
-              </StyledBadge>
-            </Button>
-          </Tooltip>
-          <Menu
-            anchorEl={anchorEl}
-            id='account-menu'
-            open={open}
-            onClose={handleClose}
-            onClick={handleClose}
-            slotProps={{
-              paper: {
-                elevation: 0,
-                sx: {
-                  overflow: 'visible',
-                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                  mt: 1.5,
-                  '& .MuiAvatar-root': {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
-                  '&::before': {
-                    content: '""',
-                    display: 'block',
-                    position: 'absolute',
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: 'background.paper',
-                    transform: 'translateY(-50%) rotate(45deg)',
-                    zIndex: 0,
+      <CardContent className='flex flex-col'>
+        <div className='flex justify-between'>
+          <div>
+            <Tooltip title='Account settings'>
+              <Button
+                onClick={handleClick}
+                aria-controls={open ? 'account-menu' : undefined}
+                aria-haspopup='true'
+                aria-expanded={open ? 'true' : undefined}>
+                <StyledBadge
+                  badgeContent={badgeContent}
+                  color='secondary'>
+                  {image ? (
+                    <Avatar
+                      alt={userName}
+                      src={image}
+                    />
+                  ) : (
+                    <Avatar {...stringAvatar(userName)} />
+                  )}
+                </StyledBadge>
+              </Button>
+            </Tooltip>
+            <Menu
+              anchorEl={anchorEl}
+              id='account-menu'
+              open={open}
+              onClose={handleClose}
+              onClick={handleClose}
+              slotProps={{
+                paper: {
+                  elevation: 0,
+                  sx: {
+                    overflow: 'visible',
+                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                    mt: 1.5,
+                    '& .MuiAvatar-root': {
+                      width: 32,
+                      height: 32,
+                      ml: -0.5,
+                      mr: 1,
+                    },
+                    '&::before': {
+                      content: '""',
+                      display: 'block',
+                      position: 'absolute',
+                      top: 0,
+                      right: 14,
+                      width: 10,
+                      height: 10,
+                      bgcolor: 'background.paper',
+                      transform: 'translateY(-50%) rotate(45deg)',
+                      zIndex: 0,
+                    },
                   },
                 },
-              },
-            }}
-            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
-            <MenuItem
-              id='profile'
-              onClick={handleClose}>
-              <StyledBadge
-                badgeContent={badgeContent}
-                color='secondary'>
-                {image ? (
-                  <Avatar
-                    alt={userName}
-                    src={image}
-                  />
-                ) : (
-                  <Avatar {...stringAvatar(userName)} />
-                )}
-              </StyledBadge>{' '}
-              Profile
-            </MenuItem>
-            <MenuItem
-              id='account'
-              onClick={handleClose}>
-              <Avatar /> My account
-            </MenuItem>
-            <Divider />
-            <MenuItem
-              id='add-account'
-              onClick={handleClose}>
-              <ListItemIcon>
-                <PersonAdd fontSize='small' />
-              </ListItemIcon>
-              Add another account
-            </MenuItem>
-            <MenuItem
-              id='settings'
-              onClick={handleClose}>
-              <ListItemIcon>
-                <Settings fontSize='small' />
-              </ListItemIcon>
-              Settings
-            </MenuItem>
-            <MenuItem
-              id='logout'
-              onClick={handleClose}>
-              <ListItemIcon>
-                <Logout fontSize='small' />
-              </ListItemIcon>
-              Logout
-            </MenuItem>
-          </Menu>
-        </div>
+              }}
+              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
+              <MenuItem
+                id='profile'
+                onClick={handleClose}>
+                <StyledBadge
+                  badgeContent={badgeContent}
+                  color='secondary'>
+                  {image ? (
+                    <Avatar
+                      alt={userName}
+                      src={image}
+                    />
+                  ) : (
+                    <Avatar {...stringAvatar(userName)} />
+                  )}
+                </StyledBadge>{' '}
+                Profile
+              </MenuItem>
+              <MenuItem
+                id='account'
+                onClick={handleClose}>
+                <Avatar /> My account
+              </MenuItem>
+              <Divider />
+              <MenuItem
+                id='add-account'
+                onClick={handleClose}>
+                <ListItemIcon>
+                  <PersonAdd fontSize='small' />
+                </ListItemIcon>
+                Add another account
+              </MenuItem>
+              <MenuItem
+                id='settings'
+                onClick={handleClose}>
+                <ListItemIcon>
+                  <Settings fontSize='small' />
+                </ListItemIcon>
+                Settings
+              </MenuItem>
+              <MenuItem
+                id='logout'
+                onClick={handleClose}>
+                <ListItemIcon>
+                  <Logout fontSize='small' />
+                </ListItemIcon>
+                Logout
+              </MenuItem>
+            </Menu>
+          </div>
 
-        <div>
-          <div className='font-semibold'>{userName}</div>
+          <div>
+            <div className='font-semibold'>{userName}</div>
+          </div>
         </div>
+        {tags && Array.isArray(tags) && (
+          <div className='flex justify-end'>
+            <Stack
+              direction='row'
+              spacing={1}>
+              {tags.map((element, key) => (
+                <Chip
+                  key={key}
+                  label={element}
+                />
+              ))}
+            </Stack>
+          </div>
+        )}
       </CardContent>
       {facebook ? (
         <SocialAction
