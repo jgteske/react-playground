@@ -1,5 +1,7 @@
 'use client';
 
+import React, { useState } from 'react';
+
 import Avatar from '@mui/material/Avatar';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -7,6 +9,16 @@ import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
+
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import Tooltip from '@mui/material/Tooltip';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Settings from '@mui/icons-material/Settings';
+import Logout from '@mui/icons-material/Logout';
 
 import SocialAction from './Social';
 
@@ -38,6 +50,52 @@ export const Profile = ({
   x,
   instagram,
 }: ProfileProps) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (event: React.MouseEvent<HTMLElement>) => {
+    if (!event.currentTarget.id) {
+      return;
+    }
+    // remove <Menu id> to resolve calling it 2x
+    const id = event.currentTarget.id;
+
+    switch (id) {
+      case 'profile': {
+        console.log('You clicked profile');
+        break;
+      }
+      case 'account': {
+        console.log('You clicked account');
+        break;
+      }
+      case 'add-account': {
+        console.log('You clicked add-account');
+        break;
+      }
+      case 'settings': {
+        console.log('You clicked settings');
+        break;
+      }
+      case 'logout': {
+        console.log('You clicked logout');
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+
+    //console.log(`You clicked me with the id: ${id}`);
+
+    // reset Anchor Element
+    setAnchorEl(null);
+  };
+
   function stringToColor(string: string) {
     let hash = 0;
     let i;
@@ -93,18 +151,113 @@ export const Profile = ({
         />
       )}
       <CardContent className='flex justify-between'>
-        <StyledBadge
-          badgeContent={badgeContent}
-          color='secondary'>
-          {image ? (
-            <Avatar
-              alt={userName}
-              src={image}
-            />
-          ) : (
-            <Avatar {...stringAvatar(userName)} />
-          )}
-        </StyledBadge>
+        <div>
+          <Tooltip title='Account settings'>
+            <Button
+              onClick={handleClick}
+              aria-controls={open ? 'account-menu' : undefined}
+              aria-haspopup='true'
+              aria-expanded={open ? 'true' : undefined}>
+              <StyledBadge
+                badgeContent={badgeContent}
+                color='secondary'>
+                {image ? (
+                  <Avatar
+                    alt={userName}
+                    src={image}
+                  />
+                ) : (
+                  <Avatar {...stringAvatar(userName)} />
+                )}
+              </StyledBadge>
+            </Button>
+          </Tooltip>
+          <Menu
+            anchorEl={anchorEl}
+            id='account-menu'
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            slotProps={{
+              paper: {
+                elevation: 0,
+                sx: {
+                  overflow: 'visible',
+                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                  mt: 1.5,
+                  '& .MuiAvatar-root': {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  '&::before': {
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: 'background.paper',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                    zIndex: 0,
+                  },
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
+            <MenuItem
+              id='profile'
+              onClick={handleClose}>
+              <StyledBadge
+                badgeContent={badgeContent}
+                color='secondary'>
+                {image ? (
+                  <Avatar
+                    alt={userName}
+                    src={image}
+                  />
+                ) : (
+                  <Avatar {...stringAvatar(userName)} />
+                )}
+              </StyledBadge>{' '}
+              Profile
+            </MenuItem>
+            <MenuItem
+              id='account'
+              onClick={handleClose}>
+              <Avatar /> My account
+            </MenuItem>
+            <Divider />
+            <MenuItem
+              id='add-account'
+              onClick={handleClose}>
+              <ListItemIcon>
+                <PersonAdd fontSize='small' />
+              </ListItemIcon>
+              Add another account
+            </MenuItem>
+            <MenuItem
+              id='settings'
+              onClick={handleClose}>
+              <ListItemIcon>
+                <Settings fontSize='small' />
+              </ListItemIcon>
+              Settings
+            </MenuItem>
+            <MenuItem
+              id='logout'
+              onClick={handleClose}>
+              <ListItemIcon>
+                <Logout fontSize='small' />
+              </ListItemIcon>
+              Logout
+            </MenuItem>
+          </Menu>
+        </div>
+
         <div>
           <div className='font-semibold'>{userName}</div>
         </div>
