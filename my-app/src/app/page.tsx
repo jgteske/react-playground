@@ -1,4 +1,7 @@
+'use client';
+
 import RootLayout from '@/components/Layout';
+import FileUploader from '@/components/FileUploader/FileUploader';
 
 export default function Home() {
   return (
@@ -11,6 +14,9 @@ export default function Home() {
         {/* Animations to chose from under https://animate.style/ */}
         <div className='animate__animated animate__fadeInTopLeft animate__slow animate__delay-1s'>
           Animate Text on Page Loading with Animate.css!
+        </div>
+        <div>
+          <FileUploader />
         </div>
       </div>
     </RootLayout>
