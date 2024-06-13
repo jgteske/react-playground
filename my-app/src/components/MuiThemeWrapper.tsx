@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import IconButton from '@mui/material/IconButton';
@@ -16,6 +16,12 @@ const MuiThemeWrapper = ({ children }: MuiThemeWrapperProps) => {
   const [themePaletteMode, setThemePaletteMode] = useState(
     isSystemDarkMode ? 'dark' : 'light'
   );
+
+  // TODO: FIX problem, that useMediaQuery() first always fires false, so it defaults for a short time to light mode
+  useEffect(() => {
+    // Initialize themePaletteMode based on system dark mode preference
+    setThemePaletteMode(isSystemDarkMode ? 'dark' : 'light');
+  }, [isSystemDarkMode]);
 
   const themePaletteModeContextProvider = React.useMemo(
     () => ({
