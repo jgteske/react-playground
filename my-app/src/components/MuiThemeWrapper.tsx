@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import CssBaseline from '@mui/material/CssBaseline';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { MuiCustomTheme } from './MuiCustomTheme';
 
 interface MuiThemeWrapperProps {
   children: React.ReactNode;
@@ -27,13 +28,27 @@ const MuiThemeWrapper = ({ children }: MuiThemeWrapperProps) => {
     []
   );
 
-  const themeProvider = React.useMemo(
+  /**
+   * Use Default Theme as ColorPaletteMode
+   */
+  /*   const themeProvider = React.useMemo(
     () =>
       createTheme({
         palette: {
           mode: themePaletteMode === 'dark' ? 'dark' : 'light',
         },
       }),
+    [themePaletteMode]
+  ); */
+
+  /**
+   * Set Custom Theme as ColorPaletteMode
+   */
+  const themeProvider = React.useMemo(
+    () =>
+      createTheme(
+        MuiCustomTheme(themePaletteMode === 'dark' ? 'dark' : 'light')
+      ),
     [themePaletteMode]
   );
 
