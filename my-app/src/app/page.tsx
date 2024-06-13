@@ -2,11 +2,12 @@
 
 import RootLayout from '@/components/Layout';
 import FileUploader from '@/components/FileUploader/FileUploader';
+import MuiThemeWrapper from '@/components/MuiThemeWrapper';
 
 export default function Home() {
   return (
     <RootLayout>
-      <div>
+      <div className='space-y-4'>
         <h1>This is an example Homepage</h1>
         <br />
         <p>Playground to try different things with react, next and ts.</p>
@@ -16,7 +17,9 @@ export default function Home() {
           Animate Text on Page Loading with Animate.css!
         </div>
         <div>
-          <FileUploader />
+          <MuiThemeWrapper>
+            <FileUploader />
+          </MuiThemeWrapper>
         </div>
       </div>
     </RootLayout>
