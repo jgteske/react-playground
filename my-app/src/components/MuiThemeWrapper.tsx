@@ -18,6 +18,7 @@ const MuiThemeWrapper = ({ children }: MuiThemeWrapperProps) => {
   );
 
   // TODO: FIX problem, that useMediaQuery() first always fires false, so it defaults for a short time to light mode
+  // ! Impossible to resolve completely
   useEffect(() => {
     // Initialize themePaletteMode based on system dark mode preference
     setThemePaletteMode(isSystemDarkMode ? 'dark' : 'light');
@@ -61,7 +62,9 @@ const MuiThemeWrapper = ({ children }: MuiThemeWrapperProps) => {
   return (
     <ThemePaletteModeContext.Provider value={themePaletteModeContextProvider}>
       <ThemeProvider theme={themeProvider}>
-        <CssBaseline />
+        {/* Remove CssBaseline to prevent flashing of light theme for the whole tailwind styled page while loading */}
+        {/*         <CssBaseline />
+         */}
         {children}
       </ThemeProvider>
     </ThemePaletteModeContext.Provider>
