@@ -43,7 +43,7 @@ export default function Home() {
 
       <div>
         <Button
-          handleClick={() => alert('hi')}
+          onClick={() => alert('hi')}
           type={'button'}
           title={'Test Titel'}
           disabled={false}>
